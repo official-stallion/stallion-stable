@@ -1,9 +1,16 @@
 # syntax=docker/dockerfile:1
+# releaseing stallion cluster on docker images
+# build for containers platforms
+# ubuntu operating system
 ## Build image
 FROM golang:1.20-buster AS build
 
 # app work directory
 WORKDIR /app
+
+LABEL app=broker
+LABEL name=stallion
+LABEL type=cluster
 
 # copy mod and sum files
 COPY go.mod go.sum ./
