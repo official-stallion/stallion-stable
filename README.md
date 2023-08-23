@@ -6,17 +6,26 @@
 Release ```Stallion``` docker images based on versions.
 You can create a ```Stallion``` server on docker from the images below.
 
-### Image
+## ENV
+
+```Stallion``` cluster environmental variables are as follow:
+
+- ```ST_SERVER_PORT``` : cluster server port
+- ```ST_METRICS_PORT``` : cluster metrics server port (available on ```/metrics```)
+- ```ST_USER``` : cluster root user
+- ```ST_PASSWORD``` : cluster root password
+
+## Image
 
 ```shell
-amirhossein21/stallion:v1.1.1
+amirhossein21/stallion:v1.4.0
 ```
 
 ### Docker run
 To run image on a single container:
 
 ```shell
-docker run -p 7025:7025 -d stallion amirhossein21/stallion:v1.1.1
+docker run -p 7025:7025 -d stallion amirhossein21/stallion:v1.4.0
 ```
 
 ### Docker compose
@@ -26,11 +35,12 @@ Docker compose for stallion server:
 version: "3.9"
 services:
   stallion-server:
-    image: amirhossein21/stallion:v1.1.1
+    image: amirhossein21/stallion:v1.4.0
     ports:
       - "7025:7025"
     environment:
-      SERVER_PORT: 7025
+      ST_SERVER_PORT: 7025
+      ST_METRICS_PORT: 7026
 ```
 
 ## Docker hub
