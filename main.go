@@ -8,15 +8,21 @@ import (
 
 const (
 	defaultPort = "7025"
+	defaultMetrics = "7026"
 )
 
 func main() {
 	port := defaultPort
-	if value, ok := os.LookupEnv("SERVER_PORT"); ok {
+	if value, ok := os.LookupEnv("ST_SERVER_PORT"); ok {
 		port = value
 	}
 
-	if err := stallion.NewServer(":" + port); err != nil {
+	metrics := defaultMetrics
+	if value, ok := os.LookupEnv("ST_METRICS_PORT"); ok {
+		metrics = value
+	} 
+
+	if err := stallion.NewServer(":" + port, metrics); err != nil {
 		panic(err)
 	}
 }
