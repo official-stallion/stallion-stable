@@ -2,13 +2,14 @@ package main
 
 import (
 	"os"
+	"strconv"
 
 	"github.com/official-stallion/stallion"
 )
 
 const (
-	defaultPort = "7025"
-	defaultMetrics = "7026"
+	defaultPort    = "7025"
+	defaultMetrics = 7026
 )
 
 func main() {
@@ -19,10 +20,20 @@ func main() {
 
 	metrics := defaultMetrics
 	if value, ok := os.LookupEnv("ST_METRICS_PORT"); ok {
-		metrics = value
-	} 
+		metrics, _ = strconv.Atoi(value)
+	}
 
-	if err := stallion.NewServer(":" + port, metrics); err != nil {
+	user, ok := os.LookupEnv("ST_USER")
+	if !ok {
+		user = ""
+	}
+
+	pass, ok := os.LookupEnv("ST_PASSWORD")
+	if !ok {
+		pass = ""
+	}
+
+	if err := stallion.NewServer(":"+port, metrics, user, pass); err != nil {
 		panic(err)
 	}
 }
