@@ -21,6 +21,13 @@ RUN go build -o /docker-gs
 # using debian image
 FROM debian:unstable-slim
 
+# maintainer
+MAINTAINER official-stallion
+
+LABEL app=broker
+LABEL name=stallion
+LABEL type=cluster
+
 # root work directory
 WORKDIR /
 
