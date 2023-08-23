@@ -35,6 +35,11 @@ LABEL app=broker
 LABEL name=stallion
 LABEL type=cluster
 
+ENV ST_SERVER_PORT
+ENV ST_METRICS_PORT
+ENV ST_USER
+ENV ST_PASSWORD
+
 # root work directory
 WORKDIR /
 
