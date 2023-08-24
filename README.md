@@ -18,14 +18,14 @@ You can create a ```Stallion``` server on docker from the images below.
 ## Image
 
 ```shell
-amirhossein21/stallion:v1.4.0
+amirhossein21/stallion:v1.4.1
 ```
 
 ### Docker run
 To run image on a single container:
 
 ```shell
-docker run -p 7025:7025 -d stallion amirhossein21/stallion:v1.4.0
+docker run -p 7025:7025 -d stallion amirhossein21/stallion:v1.4.1
 ```
 
 ### Docker compose
@@ -35,7 +35,7 @@ Docker compose for stallion server:
 version: "3.9"
 services:
   stallion-server:
-    image: amirhossein21/stallion:v1.4.0
+    image: amirhossein21/stallion:v1.4.1
     ports:
       - "7025:7025"
     environment:
