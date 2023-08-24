@@ -33,7 +33,13 @@ func main() {
 		pass = ""
 	}
 
-	if err := stallion.NewServer(":"+port, metrics, user, pass); err != nil {
-		panic(err)
+	if user != "" && pass != "" {
+		if err := stallion.NewServer(":"+port, metrics, user, pass); err != nil {
+			panic(err)
+		}
+	} else {
+		if err := stallion.NewServer(":"+port, metrics); err != nil {
+			panic(err)
+		}
 	}
 }
